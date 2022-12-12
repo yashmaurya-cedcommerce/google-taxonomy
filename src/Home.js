@@ -11,8 +11,6 @@ export default function Home() {
     const [loading, setLoading] = useState(false)
 
     const selectChangeHandler = (value, type, index) => {
-        console.log('index', index)
-        console.log('length', dropDowns.length)
         if (type === 'parent') {
             //if the top parent is changed after selecting below dropdowns
             if (dropDowns.length > 1) {
@@ -37,6 +35,11 @@ export default function Home() {
         }
         else {
             alert('endpoint reached')
+            if (type !== 'parent') {
+                let tempArray = dropDowns
+                tempArray = tempArray.slice(0, index + 1)
+                setDropDowns([...tempArray])
+            }
         }
     }
 
